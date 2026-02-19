@@ -1,0 +1,28 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build folders
+dist/
+build/
+bin/
+
+# Local runtime/config artifacts
+cert.pem
+key.pem
+gtalk_config.json
+
+# Design source files
+ginkgo_purple_*.png
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+

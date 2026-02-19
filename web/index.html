@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0a1a">
+    <title data-i18n="app.title">Ginkgo Talk - AI 手机键盘</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="app">
+        <div class="status-bar" id="statusBar">
+            <div class="status-dot" id="statusDot"></div>
+            <span class="status-text" id="statusText">连接中...</span>
+        </div>
+
+        <header class="header">
+            <h1 class="logo">Ginkgo Talk</h1>
+            <p class="tagline" data-i18n="app.tagline">AI 手机键盘</p>
+            <select id="langSelect" class="lang-select" aria-label="Language">
+                <option value="zh-CN">中文</option>
+                <option value="en-US">English</option>
+            </select>
+            <button class="install-btn hidden" id="installBtn" data-i18n="app.install">添加到主屏幕</button>
+        </header>
+
+        <div class="pair-card hidden" id="pairCard">
+            <div class="pair-title" data-i18n="pair.title">设备配对</div>
+            <div class="pair-message" id="pairMessage"></div>
+            <input class="pair-input hidden" id="pairCodeInput" type="text" inputmode="numeric" maxlength="4"
+                placeholder="请输入 4 位配对码" data-i18n-placeholder="pair.inputPlaceholder">
+            <button class="pair-submit hidden" id="pairSubmitBtn" data-i18n="pair.confirm">确认配对</button>
+            <div class="pair-hint" id="pairHint"></div>
+        </div>
+
+        <div class="input-card" id="inputCard">
+            <textarea class="input-textarea" id="inputText" placeholder="在这里输入文字，使用手机键盘或语音..."
+                data-i18n-placeholder="input.placeholder" rows="5"></textarea>
+            <div class="input-toolbar">
+                <div class="toolbar-left">
+                    <button class="toolbar-btn mic-inline-btn" id="micBtn" title="Web Speech API 语音输入"
+                        data-i18n-title="input.voiceTitle">
+                        <svg class="mic-icon" id="micIcon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
+                        <svg class="stop-icon hidden" id="stopIcon" width="20" height="20" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <rect x="6" y="6" width="12" height="12" rx="2" />
+                        </svg>
+                    </button>
+                    <span class="char-count" id="charCount"></span>
+                </div>
+                <div class="ai-status hidden" id="aiStatus"></div>
+                <div class="toolbar-right">
+                    <button class="send-btn" id="sendBtn">
+                        <span data-i18n="send.send">发送</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="22" y1="2" x2="11" y2="13" />
+                            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pc-shortcuts">
+            <div class="shortcut-label" data-i18n="shortcut.title">电脑端快捷键</div>
+            <div class="shortcut-buttons">
+                <button class="shortcut-btn" id="enterBtn" title="发送/确认 (Enter)" data-i18n-title="shortcut.enterTitle">
+                    <span class="shortcut-key">↵</span>
+                    <span>Enter</span>
+                </button>
+                <button class="shortcut-btn" id="shiftEnterBtn" title="换行 (Shift+Enter)"
+                    data-i18n-title="shortcut.shiftEnterTitle">
+                    <span class="shortcut-key">⇧↵</span>
+                    <span data-i18n="shortcut.newLine">换行</span>
+                </button>
+                <button class="shortcut-btn" id="clearPcBtn" title="清空电脑输入框 (Ctrl+A, Delete)"
+                    data-i18n-title="shortcut.clearTitle">
+                    <span class="shortcut-key">🗑</span>
+                    <span data-i18n="shortcut.clear">清除</span>
+                </button>
+                <button class="shortcut-btn" id="ctrlZBtn" title="撤销 (Ctrl+Z)" data-i18n-title="shortcut.undoTitle">
+                    <span class="shortcut-key">↶</span>
+                    <span data-i18n="shortcut.undo">撤销</span>
+                </button>
+                <button class="shortcut-btn" id="tabBtn" title="Tab 切换焦点" data-i18n-title="shortcut.tabTitle">
+                    <span class="shortcut-key">⇥</span>
+                    <span>Tab</span>
+                </button>
+                <button class="shortcut-btn" id="ctrlVBtn" title="粘贴 (Ctrl+V)" data-i18n-title="shortcut.pasteTitle">
+                    <span class="shortcut-key">📋</span>
+                    <span data-i18n="shortcut.paste">粘贴</span>
+                </button>
+                <button class="shortcut-btn" id="escBtn" title="Escape 取消" data-i18n-title="shortcut.escTitle">
+                    <span class="shortcut-key">✕</span>
+                    <span>Esc</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mode-selector" id="modeSelector">
+            <div class="mode-label" data-i18n="mode.title">AI 工具</div>
+            <div class="mode-buttons">
+                <button class="mode-btn" data-mode="tidy" title="去重、去口头禅、加标点" data-i18n-title="mode.tidyTitle">
+                    <span class="mode-icon">✨</span>
+                    <span class="mode-name" data-i18n="mode.tidy">整理</span>
+                </button>
+                <button class="mode-btn" data-mode="formal" title="口语转书面语" data-i18n-title="mode.formalTitle">
+                    <span class="mode-icon">📝</span>
+                    <span class="mode-name" data-i18n="mode.formal">正式</span>
+                </button>
+                <button class="mode-btn" data-mode="translate" title="中英自动互译"
+                    data-i18n-title="mode.translateTitle">
+                    <span class="mode-icon">🌐</span>
+                    <span class="mode-name" data-i18n="mode.translate">翻译</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <div class="history-header">
+                <h2 data-i18n="history.title">发送记录</h2>
+                <button class="clear-btn" id="clearBtn" data-i18n="history.clear">清空</button>
+            </div>
+            <div class="history-list" id="historyList">
+                <div class="history-empty" data-i18n="history.empty">还没有发送记录</div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <button class="settings-toggle" id="settingsToggle">
+                <span data-i18n="settings.title">⚙️ AI 设置</span>
+                <span class="toggle-arrow" id="toggleArrow">▶</span>
+            </button>
+            <div class="settings-panel hidden" id="settingsPanel">
+                <div class="setting-row">
+                    <label for="apiKeyInput">API Key</label>
+                    <input type="password" id="apiKeyInput" class="setting-input" placeholder="sk-..."
+                        autocomplete="off">
+                </div>
+                <div class="setting-row">
+                    <label for="baseUrlInput">Base URL</label>
+                    <input type="text" id="baseUrlInput" class="setting-input" placeholder="https://api.deepseek.com">
+                </div>
+                <div class="setting-row">
+                    <label for="modelInput">Model</label>
+                    <input type="text" id="modelInput" class="setting-input" placeholder="deepseek-chat">
+                </div>
+                <div class="setting-row">
+                    <label for="lanIpInput" data-i18n="settings.lanIpLabel">LAN IP（或 auto）</label>
+                    <input type="text" id="lanIpInput" class="setting-input" placeholder="auto / 192.168.x.x">
+                </div>
+                <button class="save-config-btn" id="saveConfigBtn" data-i18n="settings.save">保存</button>
+                <div class="config-status" id="configStatus"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+
+</html>
