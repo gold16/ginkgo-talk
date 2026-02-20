@@ -16,6 +16,11 @@
 </head>
 
 <body>
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
     <div class="app">
         <div class="status-bar" id="statusBar">
             <div class="status-dot" id="statusDot"></div>
@@ -25,11 +30,13 @@
         <header class="header">
             <h1 class="logo">Ginkgo Talk</h1>
             <p class="tagline" data-i18n="app.tagline">AI 手机键盘</p>
-            <select id="langSelect" class="lang-select" aria-label="Language">
-                <option value="zh-CN">中文</option>
-                <option value="en-US">English</option>
-            </select>
-            <button class="install-btn hidden" id="installBtn" data-i18n="app.install">添加到主屏幕</button>
+            <div class="header-controls">
+                <select id="langSelect" class="lang-select" aria-label="Language">
+                    <option value="zh-CN">中文</option>
+                    <option value="en-US">English</option>
+                </select>
+                <button class="install-btn hidden" id="installBtn" data-i18n="app.install">添加到主屏幕</button>
+            </div>
         </header>
 
         <div class="pair-card hidden" id="pairCard">
@@ -77,7 +84,7 @@
         </div>
 
         <div class="pc-shortcuts">
-            <div class="shortcut-label" data-i18n="shortcut.title">电脑端快捷键</div>
+            <div class="section-title" data-i18n="shortcut.title">电脑端快捷键</div>
             <div class="shortcut-buttons">
                 <button class="shortcut-btn" id="enterBtn" title="发送/确认 (Enter)" data-i18n-title="shortcut.enterTitle">
                     <span class="shortcut-key">↵</span>
@@ -113,19 +120,42 @@
         </div>
 
         <div class="mode-selector" id="modeSelector">
-            <div class="mode-label" data-i18n="mode.title">AI 工具</div>
+            <div class="section-title" data-i18n="mode.title">AI 工具</div>
             <div class="mode-buttons">
                 <button class="mode-btn" data-mode="tidy" title="去重、去口头禅、加标点" data-i18n-title="mode.tidyTitle">
-                    <span class="mode-icon">✨</span>
+                    <svg class="mode-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z" />
+                        <path d="m14 7 3 3" />
+                        <path d="M5 6v4" />
+                        <path d="M19 14v4" />
+                        <path d="M10 2v2" />
+                        <path d="M7 8H3" />
+                        <path d="M21 16h-4" />
+                        <path d="M11 3H9" />
+                    </svg>
                     <span class="mode-name" data-i18n="mode.tidy">整理</span>
                 </button>
                 <button class="mode-btn" data-mode="formal" title="口语转书面语" data-i18n-title="mode.formalTitle">
-                    <span class="mode-icon">📝</span>
+                    <svg class="mode-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <line x1="10" y1="9" x2="8" y2="9" />
+                    </svg>
                     <span class="mode-name" data-i18n="mode.formal">正式</span>
                 </button>
-                <button class="mode-btn" data-mode="translate" title="中英自动互译"
-                    data-i18n-title="mode.translateTitle">
-                    <span class="mode-icon">🌐</span>
+                <button class="mode-btn" data-mode="translate" title="中英自动互译" data-i18n-title="mode.translateTitle">
+                    <svg class="mode-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
                     <span class="mode-name" data-i18n="mode.translate">翻译</span>
                 </button>
             </div>

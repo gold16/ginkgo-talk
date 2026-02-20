@@ -39,19 +39,45 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeEls.forEach(el => el.classList.add('visible'));
     }
 
-    // ===== Simulated typing animation in phone mockup =====
-    const textarea = document.querySelector('.phone-textarea');
-    if (textarea) {
-        const text = '明天下午三点开会，记得准备一下季度报告的数据';
-        let i = 0;
-        function typeChar() {
-            if (i < text.length) {
-                textarea.textContent += text[i];
-                i++;
-                setTimeout(typeChar, 80 + Math.random() * 60);
+    // ===== Simulated dynamic typewriter in phone mockup =====
+    const typewriterEl = document.getElementById('typewriterText');
+    if (typewriterEl) {
+        const phrases = [
+            "Hello World!",
+            "Drafting a new email...",
+            "整理这段语音笔记",
+            "Translating to English..."
+        ];
+        let currentPhraseIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 100;
+        
+        function typeWriter() {
+            const currentPhrase = phrases[currentPhraseIndex];
+            
+            if (isDeleting) {
+                typewriterEl.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+                typingDelay = 30 + Math.random() * 20;
+            } else {
+                typewriterEl.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                typingDelay = 80 + Math.random() * 60;
             }
+            
+            if (!isDeleting && currentCharIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingDelay = 2000; // Pause at end of phrase
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                typingDelay = 500; // Pause before next phrase
+            }
+            
+            setTimeout(typeWriter, typingDelay);
         }
-        // Start typing after a delay
-        setTimeout(typeChar, 2000);
+        
+        setTimeout(typeWriter, 1000);
     }
 });

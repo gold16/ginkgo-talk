@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ginkgo Talk — AI Mobile Keyboard for Your PC</title>
+    <title>Ginkgo Talk - AI Mobile Keyboard for Your PC</title>
     <meta name="description"
         content="Turn your phone into an AI-powered keyboard for your PC. Type, dictate, and let AI polish your text — all over your local network. Free and open source.">
     <meta name="keywords" content="mobile keyboard, PC keyboard, AI text, phone to PC, LAN typing, open source, Go">
     <meta name="author" content="Ginkgo Talk Contributors">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Ginkgo Talk — AI Mobile Keyboard for Your PC">
+    <meta property="og:title" content="Ginkgo Talk - AI Mobile Keyboard for Your PC">
     <meta property="og:description"
         content="Turn your phone into an AI-powered keyboard for your PC. Free, open source, privacy-first.">
     <meta property="og:type" content="website">
@@ -19,90 +19,138 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
     <link rel="apple-touch-icon" href="assets/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="bg-glow"></div>
+<body id="top">
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="glow-orb orb-primary"></div>
+        <div class="glow-orb orb-secondary"></div>
+        <div class="glow-orb orb-accent"></div>
+        <div class="noise-overlay"></div>
+    </div>
 
     <!-- ===== Navigation ===== -->
     <nav class="nav">
-        <a href="#" class="nav-brand">
-            <img src="assets/logo.png" alt="Ginkgo Talk">
-            Ginkgo Talk
-        </a>
-        <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#demo">Demo</a></li>
-            <li><a href="#quickstart">Quick Start</a></li>
-            <li>
-                <a href="https://github.com/gold16/ginkgo-talk" target="_blank" rel="noopener" class="nav-github">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                    </svg>
-                    GitHub
-                </a>
-            </li>
-        </ul>
-        <button class="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="nav-container">
+            <a href="#top" class="nav-brand">
+                <div class="brand-logo-container">
+                    <img src="assets/logo.png" alt="Ginkgo Talk Logo">
+                    <div class="logo-glow"></div>
+                </div>
+                <span>Ginkgo Talk</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#demo" class="nav-link">Architecture</a></li>
+                <li><a href="#quickstart" class="nav-link">Quick Start</a></li>
+                <li>
+                    <a href="https://github.com/gold16/ginkgo-talk" target="_blank" rel="noopener"
+                        class="nav-btn-github">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                        <span>Star on GitHub</span>
+                    </a>
+                </li>
+            </ul>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
 
     <!-- ===== Hero ===== -->
     <section class="hero">
-        <div class="hero-content">
-            <img src="assets/logo.png" alt="Ginkgo Talk Logo" class="hero-logo">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                Open Source &bull; MIT License
-            </div>
-            <h1>
-                Your Phone is Your<br>
-                <span class="gradient-text">AI Keyboard</span>
-            </h1>
-            <p class="hero-desc">
-                Turn your phone into a powerful AI-enhanced keyboard for your PC. Type, dictate, and let AI tidy your
-                text — all over your local network, zero cloud, zero tracking.
-            </p>
-            <div class="hero-actions">
-                <a href="https://github.com/gold16/ginkgo-talk/releases" target="_blank" rel="noopener"
-                    class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                        <polyline points="7 10 12 15 17 10" />
-                        <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                    Download
-                </a>
-                <a href="https://github.com/gold16/ginkgo-talk" target="_blank" rel="noopener"
-                    class="btn btn-secondary">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                    </svg>
-                    View Source
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-value">100%</div>
-                    <div class="stat-label">Local & Private</div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge fade-in-up">
+                    <span class="badge-dot pulse"></span>
+                    <span class="badge-text">100% Local & Privacy-First</span>
                 </div>
-                <div class="stat">
-                    <div class="stat-value">&lt; 12 MB</div>
-                    <div class="stat-label">Single Binary</div>
+                <h1 class="hero-title fade-in-up" style="animation-delay: 0.1s;">
+                    The AI Keyboard<br>
+                    <span class="gradient-text gradient-flow">For Your PC</span>
+                </h1>
+                <p class="hero-desc fade-in-up" style="animation-delay: 0.2s;">
+                    Turn your smartphone into a frictionless, AI-enhanced controller. Dictate, translate, and let
+                    DeepSeek polish your text before it reaches your desktop.
+                </p>
+                <div class="hero-actions fade-in-up" style="animation-delay: 0.3s;">
+                    <a href="https://github.com/gold16/ginkgo-talk/releases" target="_blank" rel="noopener"
+                        class="btn btn-primary btn-glow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download Beta
+                        <div class="hover-glow"></div>
+                    </a>
+                    <a href="#quickstart" class="btn btn-secondary">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                        Quick Start
+                    </a>
                 </div>
-                <div class="stat">
-                    <div class="stat-value">MIT</div>
-                    <div class="stat-label">Open Source</div>
+
+                <div class="hero-metrics fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="metric">
+                        <span class="metric-val">&lt; 12MB</span>
+                        <span class="metric-lbl">Single Binary</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric">
+                        <span class="metric-val">0ms</span>
+                        <span class="metric-lbl">Cloud Latency</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric">
+                        <span class="metric-val">MIT</span>
+                        <span class="metric-lbl">Open Source</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual fade-in-up" style="animation-delay: 0.3s;">
+                <div class="floating-device">
+                    <div class="device-screen">
+                        <!-- Mockup of the mobile app -->
+                        <div class="mockup-header">
+                            <div class="mockup-logo">GT</div>
+                            <div class="mockup-status">Connected</div>
+                        </div>
+                        <div class="mockup-input font-mono">
+                            <div id="typewriterText"></div>
+                        </div>
+                        <div class="mockup-tools">
+                            <div class="tool-btn active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z" />
+                                    <path d="m14 7 3 3" />
+                                </svg> Tidy</div>
+                            <div class="tool-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                </svg> Formal</div>
+                        </div>
+                        <div class="mockup-keyboard">
+                            <div class="kb-row">
+                                <div class="kb-key w-long">Send to PC</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="device-glow"></div>
                 </div>
             </div>
         </div>
@@ -110,77 +158,119 @@
 
     <!-- ===== Features ===== -->
     <section class="features" id="features">
-        <div class="container">
-            <div class="section-label fade-in">Features</div>
-            <h2 class="section-title fade-in">Everything You Need,<br>Nothing You Don't</h2>
-            <p class="section-subtitle fade-in">Lightweight, secure, and built for getting things done.</p>
+        <div class="container bg-decoration">
+            <div class="section-header fade-in">
+                <span class="pill-badge">Core Capabilities</span>
+                <h2 class="section-title">Everything You Need.<br>Nothing You Don't.</h2>
+            </div>
 
             <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">📱</div>
-                    <h3>QR Code Pairing</h3>
-                    <p>Scan a QR code and enter a 4-digit code — your phone connects to your PC in seconds. No apps to
-                        install on your phone.</p>
+                <!-- Feature 1 -->
+                <div class="glass-card feature-card fade-in">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <rect x="7" y="7" width="3" height="3" />
+                            <rect x="14" y="7" width="3" height="3" />
+                            <rect x="7" y="14" width="3" height="3" />
+                            <rect x="14" y="14" width="3" height="3" />
+                        </svg>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>QR Sync</h3>
+                    <p>Point your camera at your screen. Enter a 4-digit code. Instantly connected. No mobile app
+                        installation required.</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">✨</div>
-                    <h3>AI Text Processing</h3>
-                    <p>One-tap AI modes: tidy messy notes, convert to formal writing, or auto-translate between Chinese
-                        and English.</p>
+
+                <!-- Feature 2 -->
+                <div class="glass-card feature-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z" />
+                            <path d="m14 7 3 3" />
+                            <path d="M5 6v4" />
+                            <path d="M19 14v4" />
+                            <path d="M10 2v2" />
+                            <path d="M7 8H3" />
+                            <path d="M21 16h-4" />
+                            <path d="M11 3H9" />
+                        </svg>
+                        <div class="icon-glow icon-glow-alt"></div>
+                    </div>
+                    <h3>AI Supercharged</h3>
+                    <p>Clean up messy voice notes, convert conversational thoughts to formal text, or auto-translate on
+                        the fly.</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🎙️</div>
-                    <h3>Voice Input</h3>
-                    <p>Dictate text using your phone's microphone via Web Speech API. Great for long-form input or when
-                        your hands are busy.</p>
+
+                <!-- Feature 3 -->
+                <div class="glass-card feature-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>Voice Dictation</h3>
+                    <p>Harness your smartphone's built-in Web Speech API to dictate long-form content swiftly and
+                        accurately.</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">⌨️</div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card feature-card fade-in">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2" />
+                            <line x1="6" y1="8" x2="6" y2="8" />
+                            <line x1="10" y1="8" x2="10" y2="8" />
+                            <line x1="14" y1="8" x2="14" y2="8" />
+                            <line x1="18" y1="8" x2="18" y2="8" />
+                            <line x1="8" y1="12" x2="16" y2="12" />
+                            <line x1="8" y1="16" x2="16" y2="16" />
+                        </svg>
+                        <div class="icon-glow icon-glow-alt"></div>
+                    </div>
                     <h3>Desktop Shortcuts</h3>
-                    <p>Remote-trigger Enter, Shift+Enter, Tab, Esc, Ctrl+Z, Ctrl+V and more — control your desktop app
-                        without touching your PC.</p>
+                    <p>Trigger PC macros directly from your phone. Send Enter, Ctrl+Z, Ctrl+V, or Esc wirelessly via
+                        WebSockets.</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🖥️</div>
-                    <h3>System Tray</h3>
-                    <p>Runs quietly in your Windows system tray with IP display, QR code access, and pair code — always
-                        one click away.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privacy First</h3>
-                    <p>Everything stays on your local network. Self-signed HTTPS, session tokens, and device
-                        verification. No cloud, no tracking.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ===== How It Works ===== -->
-    <section id="how-it-works">
-        <div class="container">
-            <div class="section-label fade-in">How It Works</div>
-            <h2 class="section-title fade-in">Three Steps to Start</h2>
-            <p class="section-subtitle fade-in">No drivers, no phone apps — just your browser.</p>
+                <!-- Feature 5 -->
+                <div class="glass-card feature-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>Native System Tray</h3>
+                    <p>Runs silently in your Windows system tray. One click reveals your LAN IP, QR pairing, and status
+                        metrics.</p>
+                </div>
 
-            <div class="steps-grid">
-                <div class="step-card fade-in">
-                    <div class="step-number">1</div>
-                    <h3>Run on Your PC</h3>
-                    <p>Download the single .exe file or build from source. Launch it — a system tray icon appears with
-                        your LAN IP and QR code.</p>
-                </div>
-                <div class="step-card fade-in">
-                    <div class="step-number">2</div>
-                    <h3>Scan with Phone</h3>
-                    <p>Open the QR code page on your PC browser, scan it with your phone camera. Enter the 4-digit
-                        pairing code shown on your PC.</p>
-                </div>
-                <div class="step-card fade-in">
-                    <div class="step-number">3</div>
-                    <h3>Type & Send</h3>
-                    <p>Type on your phone keyboard, use voice input, or apply AI processing — your text appears on your
-                        PC instantly via WebSocket.</p>
+                <!-- Feature 6 -->
+                <div class="glass-card feature-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <div class="icon-glow icon-glow-alt"></div>
+                    </div>
+                    <h3>Zero Telemetry</h3>
+                    <p>Data stays entirely on your local network. Protected by self-signed HTTPS, session tokens, and
+                        strict device verification.</p>
                 </div>
             </div>
         </div>
@@ -188,145 +278,128 @@
 
     <!-- ===== Demo Showcase ===== -->
     <section class="showcase" id="demo">
-        <div class="container">
-            <div class="showcase-content">
-                <div class="showcase-visual fade-in">
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="phone-header">
-                                <h4>Ginkgo Talk</h4>
-                                <p>AI Mobile Keyboard</p>
-                            </div>
-                            <div class="phone-textarea" id="demoTextarea"></div>
-                            <div class="phone-btn-row">
-                                <span class="phone-btn accent">✨ Tidy</span>
-                                <span class="phone-btn">📝 Formal</span>
-                                <span class="phone-btn">🌐 Translate</span>
-                            </div>
-                            <div class="phone-btn-row">
-                                <span class="phone-btn">↵ Enter</span>
-                                <span class="phone-btn">⇧↵ New Line</span>
-                                <span class="phone-btn">↶ Undo</span>
-                            </div>
-                            <div class="phone-send">Send →</div>
+        <div class="container container-split">
+            <div class="showcase-visual fade-in">
+                <div class="glass-panel showcase-panel">
+                    <div class="panel-header">
+                        <div class="mac-dots">
+                            <span></span><span></span><span></span>
                         </div>
+                        <div class="panel-title">GinkgoTalk Backend Terminal</div>
                     </div>
-                </div>
-                <div class="fade-in">
-                    <div class="section-label">Live Demo</div>
-                    <h2 class="section-title">A Keyboard That<br>Thinks With You</h2>
-                    <ul class="showcase-list">
-                        <li>
-                            <span class="showcase-check">✓</span>
-                            <div>
-                                <h4>Natural Input</h4>
-                                <p>Use your phone's native keyboard or voice — type in any language your phone supports.
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="showcase-check">✓</span>
-                            <div>
-                                <h4>AI Polish</h4>
-                                <p>Messy voice-to-text? Tap "Tidy" and AI removes filler words and adds punctuation. Tap
-                                    "Formal" to convert casual notes to professional prose.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="showcase-check">✓</span>
-                            <div>
-                                <h4>Instant Translation</h4>
-                                <p>Write in Chinese, get English — or vice versa. One-tap auto-detect translation
-                                    powered by DeepSeek.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="showcase-check">✓</span>
-                            <div>
-                                <h4>PWA Ready</h4>
-                                <p>Add to your phone's home screen for app-like experience. No install from any app
-                                    store needed.</p>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="panel-body font-mono">
+                        <p><span class="text-green">INFO</span> [0.000] Starting GinkgoTalk local server...</p>
+                        <p><span class="text-green">INFO</span> [0.041] Binding to LAN IP 192.168.1.100:9527</p>
+                        <p><span class="text-green">INFO</span> [0.125] Initializing device pairing manager.</p>
+                        <p><span class="text-cyan">WAIT</span> [1.450] Waiting for device connection...</p>
+                        <p class="mt-4"><span class="text-yellow">AUTH</span> [8.221] Device pair initiated from
+                            192.168.1.102</p>
+                        <p><span class="text-green">SUCCESS</span> [10.052] WebSocket session established.</p>
+                        <p class="mt-4 pulse-text">> Receiving payload: "Hello World"</p>
+                        <p>> Simulating keystrokes on desktop...</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- ===== Tech Stack ===== -->
-    <section id="tech">
-        <div class="container" style="text-align:center">
-            <div class="section-label fade-in">Built With</div>
-            <h2 class="section-title fade-in">Minimal Dependencies,<br>Maximum Performance</h2>
+            <div class="showcase-text fade-in">
+                <span class="pill-badge">Developer Friendly</span>
+                <h2 class="section-title">Built Fast.<br>Runs Faster.</h2>
 
-            <div class="tech-grid fade-in">
-                <div class="tech-badge">
-                    <div class="tech-badge-icon">Go</div>
-                    <div>
-                        <h4>Go Backend</h4>
-                        <p>net/http + gorilla/websocket</p>
-                    </div>
-                </div>
-                <div class="tech-badge">
-                    <div class="tech-badge-icon">WS</div>
-                    <div>
-                        <h4>WebSocket</h4>
-                        <p>Real-time text relay</p>
-                    </div>
-                </div>
-                <div class="tech-badge">
-                    <div class="tech-badge-icon">📱</div>
-                    <div>
-                        <h4>PWA</h4>
-                        <p>Progressive Web App</p>
-                    </div>
-                </div>
-                <div class="tech-badge">
-                    <div class="tech-badge-icon">🔐</div>
-                    <div>
-                        <h4>HTTPS</h4>
-                        <p>Self-signed TLS certificates</p>
-                    </div>
-                </div>
-                <div class="tech-badge">
-                    <div class="tech-badge-icon">🤖</div>
-                    <div>
-                        <h4>DeepSeek AI</h4>
-                        <p>Optional text processing</p>
-                    </div>
-                </div>
+                <ul class="feature-list mt-8">
+                    <li>
+                        <div class="li-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg></div>
+                        <div class="li-content">
+                            <h4>Go Backend</h4>
+                            <p>Engineered with Go's net/http and gorilla/websocket for robust, highly concurrent
+                                connection management.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="li-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg></div>
+                        <div class="li-content">
+                            <h4>Progressive Web App</h4>
+                            <p>The client UI installs seamlessly to any smartphone homescreen providing a native feel
+                                without App Store friction.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="li-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg></div>
+                        <div class="li-content">
+                            <h4>Hardware Level Emulation</h4>
+                            <p>Translates WebSocket payloads directly into native Windows user32.dll API calls for
+                                reliable keystrokes.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- ===== Quick Start ===== -->
     <section class="quickstart" id="quickstart">
-        <div class="container">
-            <div class="section-label fade-in">Quick Start</div>
-            <h2 class="section-title fade-in">Up and Running in 30 Seconds</h2>
-            <p class="section-subtitle fade-in">One binary, no installer. Works on Windows.</p>
+        <div class="container container-narrow">
+            <div class="text-center fade-in">
+                <span class="pill-badge style-outline">Installation</span>
+                <h2 class="section-title">30 Seconds to Launch.</h2>
+                <p class="section-subtitle">No installers. No bloated dependencies.</p>
+            </div>
 
-            <div class="code-block fade-in">
-                <div class="code-header">
-                    <span class="code-dot red"></span>
-                    <span class="code-dot yellow"></span>
-                    <span class="code-dot green"></span>
-                    <span class="code-title">Terminal</span>
+            <div class="terminal-mockup fade-in mt-12">
+                <div class="terminal-header">
+                    <div class="mac-dots"><span></span><span></span><span></span></div>
+                    <span>bash</span>
                 </div>
-                <div class="code-body">
-                    <div><span class="comment"># Option 1: Download pre-built binary from GitHub Releases</span></div>
-                    <div><span class="comment"># Option 2: Build from source</span></div>
-                    <br>
-                    <div><span class="prompt">$ </span><span class="command">git clone</span> <span
-                            class="string">https://github.com/gold16/ginkgo-talk.git</span></div>
-                    <div><span class="prompt">$ </span><span class="command">cd</span> ginkgo-talk</div>
-                    <div><span class="prompt">$ </span><span class="command">go build</span> -ldflags <span
-                            class="string">"-H windowsgui"</span> -o GinkgoTalk.exe .</div>
-                    <div><span class="prompt">$ </span>./GinkgoTalk.exe</div>
-                    <br>
-                    <div><span class="comment"># Open https://&lt;LAN-IP&gt;:9527/qrcode to see QR code</span></div>
-                    <div><span class="comment"># Scan with your phone → Enter pair code → Done!</span></div>
+                <div class="terminal-content">
+                    <div class="line">
+                        <span class="comment"># Option 1: Download pre-built binary</span>
+                    </div>
+                    <div class="line">
+                        <span class="prompt">$</span> <span class="cmd">curl</span> -L
+                        https://github.com/gold16/ginkgo-talk/releases/latest/download/GinkgoTalk.exe -o GinkgoTalk.exe
+                    </div>
+                    <div class="line">
+                        <span class="prompt">$</span> ./GinkgoTalk.exe
+                    </div>
+                    <div class="line mt-4">
+                        <span class="comment"># Option 2: Build from source</span>
+                    </div>
+                    <div class="line">
+                        <span class="prompt">$</span> <span class="cmd">git</span> clone
+                        https://github.com/gold16/ginkgo-talk.git
+                    </div>
+                    <div class="line">
+                        <span class="prompt">$</span> <span class="cmd">cd</span> ginkgo-talk
+                    </div>
+                    <div class="line">
+                        <span class="prompt">$</span> <span class="cmd">go</span> build -ldflags <span
+                            class="string">"-H windowsgui"</span> -o GinkgoTalk.exe .
+                    </div>
+                </div>
+            </div>
+
+            <div class="steps-row fade-in mt-12">
+                <div class="step-badge">
+                    <div class="step-num">1</div>
+                    <span>Run the EXE</span>
+                </div>
+                <div class="step-arr">→</div>
+                <div class="step-badge">
+                    <div class="step-num">2</div>
+                    <span>Scan QR Code</span>
+                </div>
+                <div class="step-arr">→</div>
+                <div class="step-badge">
+                    <div class="step-num">3</div>
+                    <span>Start Typing</span>
                 </div>
             </div>
         </div>
@@ -334,22 +407,38 @@
 
     <!-- ===== Footer ===== -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="assets/logo.png" alt="Ginkgo Talk">
-                Ginkgo Talk
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Ginkgo Talk Logo" class="footer-logo">
+                    <span class="footer-logotype">Ginkgo Talk</span>
+                </div>
+                <div class="footer-links-grid">
+                    <div class="footer-col">
+                        <h4>Project</h4>
+                        <a href="https://github.com/gold16/ginkgo-talk">Source Code</a>
+                        <a href="https://github.com/gold16/ginkgo-talk/releases">Releases</a>
+                        <a href="https://github.com/gold16/ginkgo-talk/issues">Issues Tracker</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="https://github.com/gold16/ginkgo-talk/blob/main/LICENSE">MIT License</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Community</h4>
+                        <a href="https://github.com/gold16/ginkgo-talk/discussions" target="_blank"
+                            rel="noopener">GitHub Discussions</a>
+                    </div>
+                </div>
             </div>
-            <ul class="footer-links">
-                <li><a href="https://github.com/gold16/ginkgo-talk" target="_blank" rel="noopener">GitHub</a></li>
-                <li><a href="https://github.com/gold16/ginkgo-talk/releases" target="_blank" rel="noopener">Releases</a>
-                </li>
-                <li><a href="https://github.com/gold16/ginkgo-talk/issues" target="_blank" rel="noopener">Issues</a>
-                </li>
-                <li><a href="https://github.com/gold16/ginkgo-talk/blob/main/LICENSE" target="_blank" rel="noopener">MIT
-                        License</a></li>
-            </ul>
-            <div class="footer-copy">
-                &copy; 2026 Ginkgo Talk Contributors
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ginkgo Talk Contributors. All rights reserved.</p>
+                <div class="footer-heart">
+                    Built with <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg> in Go.
+                </div>
             </div>
         </div>
     </footer>
